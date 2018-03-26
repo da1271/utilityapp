@@ -1,0 +1,69 @@
+<form [formGroup]="registerForm" (ngSubmit)="addButton(registerForm.value)" novalidate autocomplete="off">
+  <div class="sub-search-container row">
+    <h3>Delivery Method</h3>
+    <!-- <div class="sub-search-wrapper"> -->
+
+      <div class="col-md-4">
+        <label for="name">Name</label>
+        <input type="text" class="user-input-text" [formControl]="add_name" id="name" placeholder="name">
+        <input type="text" class="user-input-text" [formControl]="add_description" id="description" placeholder="description">
+        <!-- <div class="text-danger" *ngIf="registerForm.get('group_description').dirty && registerForm.get('group_description').errors">
+          <span class="col-sm-10" style="padding:4px 0 0" *ngIf="registerForm.get('group_description').errors">
+                Please enter your last name
+            </span>
+        </div> -->
+      <!-- </div> -->
+
+<div class="text-center">
+<button type="submit" [disabled]="registerForm.invalid" class="ycc-button button-search">Submit</button>
+<button type="reset" class="ycc-button button-clear">Reset</button>
+</div>
+
+    </div>
+  </div>
+</form>
+<br>
+
+<table class="postTable container" id="myTable">
+    <thead>
+      <tr>
+        <th (click)="sortTable(0)" class="postTableCss">Delivery Methods</th>
+        <th class="postTableCss">Delivery name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let deliveryMethod of newArray" id='searchContainer' >
+        <td>
+            <form [formGroup]="editForm" (ngSubmit)="updateButton(deliveryMethod.delivery_method.name, deliveryMethod.delivery_method.description, editForm.value)" novalidate autocomplete="off">                
+          <span [hidden]="deliveryMethod.delivery_methodEdit" (dblclick)="doubleClickDeliveryMethod(deliveryMethod)">{{ deliveryMethod.delivery_method.name  }}</span>
+          <input ID="formInput" [hidden]="!deliveryMethod.delivery_methodEdit" [formControl]="newName"  autofocus />
+          <!-- <input [hidden]="!deliveryMethod.delivery_methodEdit" (click)="doneEditDeliveryMethod(deliveryMethod)" type="submit" value="Edit">
+          <button [hidden]="!deliveryMethod.delivery_methodEdit" (click)="doneEditDeliveryMethod(deliveryMethod)">cancel</button> -->
+        </form>        
+        </td>
+        <td>
+          <form [formGroup]="editForm" (ngSubmit)="updateButton(deliveryMethod.delivery_method.name, deliveryMethod.delivery_method.description, editForm.value)" novalidate autocomplete="off">                          
+          <span [hidden]="deliveryMethod.delivery_methodEdit" (dblclick)="doubleClickDeliveryMethod(deliveryMethod)">{{ deliveryMethod.delivery_method.description  }}</span>
+          <input ID="formInput" [hidden]="!deliveryMethod.delivery_methodEdit" [formControl]="newDescription"  autofocus />
+          <input [hidden]="!deliveryMethod.delivery_methodEdit" (click)="doneEditDeliveryMethod(deliveryMethod)" type="submit" value="Edit">
+          <button type="button" [hidden]="!deliveryMethod.delivery_methodEdit" (click)="doneEditDeliveryMethod(deliveryMethod)">cancel</button>
+        </form>
+        </td>
+        <!-- <td>{{ deliveryMethod.delivery_method.description }}</td> -->
+       
+        <!-- <td><form [formGroup]="editForm" (ngSubmit)="updateButton(deliveryMethod.name, deliveryMethod.description, editForm.value)" novalidate autocomplete="off"><input [formControl]="newName" class="clickableCell"  placeholder="Name"><input [formControl]="newDescription" class="clickableCell"  placeholder="Description"><input type="submit" value="Edit"></form></td>
+        <td><img id="trash" title="Delete Group" type="image" src="assets/images/delete_icon.png" class="clickableCell" (click)="removeButton(deliveryMethod.name, deliveryMethod.description)"></td><br> -->
+
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- <td>
+      <span [hidden]="sku.country_code_edit" (dblclick)="doubleClickCountry(sku)">{{ sku.country  }}</span>
+      <form [formGroup]="editForm" (ngSubmit)="updateButton(sku.country, sku.country_code, editForm.value)" novalidate autocomplete="off">
+        <input ID="formInput" [hidden]="!sku.country_code_edit" [formControl]="newCountry"  autofocus />
+        <input [hidden]="!sku.country_code_edit" (click)="doneEditCountry(sku)" type="submit" value="Edit">
+        <button [hidden]="!sku.country_code_edit" (click)="doneEditCountry(sku)">cancel</button>
+      </form>
+  </td> -->

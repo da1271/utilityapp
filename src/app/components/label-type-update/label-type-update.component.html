@@ -1,0 +1,41 @@
+<form [formGroup]="registerForm" (ngSubmit)="addButton(registerForm.value)" novalidate autocomplete="off">
+  <div class="sub-search-container row">
+    <h3>Label Type Details</h3>
+    <!-- <div class="sub-search-wrapper"> -->
+
+      <div class="col-md-4">
+        <label for="add_sku_description">Add Label Type</label>
+        <input type="text" class="user-input-text" [formControl]="add_label_type"  placeholder="Label Type">
+
+<div class="text-center">
+<button type="submit" [disabled]="registerForm.invalid" class="ycc-button button-search">Submit</button>
+<button type="reset" class="ycc-button button-clear">Reset</button>
+</div>
+
+    </div>
+  </div>
+</form>
+
+
+
+<table class="postTable container" id="myTable">
+    <thead>
+      <tr>
+        <th (click)="sortTable(0)" class="postTableCss">Label Type</th>
+        <th class="postTableCss"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let label_type of newArray" id='searchContainer' >
+          <td>
+              <form [formGroup]="editForm" (ngSubmit)="updateButton(label_type.label_types, editForm.value)" novalidate autocomplete="off">                          
+              <span [hidden]="label_type.label_typesEdit" (dblclick)="doubleClickLabelType(label_type)">{{ label_type.label_types }}</span>
+              <input ID="formInput" [hidden]="!label_type.label_typesEdit" [formControl]="newLabelType"  autofocus />
+              <input [hidden]="!label_type.label_typesEdit" (click)="doneEditLabelType(label_type)" type="submit" value="Edit">
+              <button type="button" [hidden]="!label_type.label_typesEdit" (click)="doneEditLabelType(label_type)">cancel</button>
+            </form>
+            </td>
+      </tr>
+    </tbody>
+  </table>
+

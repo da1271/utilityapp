@@ -1,0 +1,35 @@
+<form [formGroup]="registerForm" (ngSubmit)="addButton(registerForm.value)" novalidate autocomplete="off">
+  <div class="sub-search-container row">
+    <h3>Rejected Reason Description Details</h3>
+    <!-- <div class="sub-search-wrapper"> -->
+
+      <div class="col-md-4">
+        <label for="add_rejected_reason_desc">Add Sku Description</label>
+        <input type="text" class="user-input-text" [formControl]="add_rejected_reason_desc"  placeholder="Rejected Reason Description">
+
+<div class="text-center">
+<button type="submit" [disabled]="registerForm.invalid" class="ycc-button button-search">Submit</button>
+<button type="reset" class="ycc-button button-clear">Reset</button>
+</div>
+
+    </div>
+  </div>
+</form>
+
+
+
+<table class="postTable container" id="myTable">
+    <thead>
+      <tr>
+        <th (click)="sortTable(0)" class="postTableCss">Rejected Reason Description</th>
+        <th class="postTableCss"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reject_reason_desc of reject_reason_descs" id='searchContainer' >
+        <td>{{ reject_reason_desc }}</td>
+        <td><form [formGroup]="editForm" (ngSubmit)="updateButton(reject_reason_desc, editForm.value)" novalidate autocomplete="off"><input [formControl]="newRejectedReasonDesc" class="clickableCell" ><input type="submit" value="Edit"></form></td>
+        <td><img id="trash" title="Delete Group" type="image" src="assets/images/delete_icon.png" class="clickableCell" (click)="removeButton(reject_reason_desc)"></td><br>
+      </tr>
+    </tbody>
+  </table>

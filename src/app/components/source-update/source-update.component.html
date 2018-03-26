@@ -1,0 +1,41 @@
+<form [formGroup]="registerForm" (ngSubmit)="addButton(registerForm.value)" novalidate autocomplete="off">
+  <div class="sub-search-container row">
+    <h3>Source Details</h3>
+    <!-- <div class="sub-search-wrapper"> -->
+
+      <div class="col-md-4">
+        <label for="add_source">Add Source</label>
+        <input type="text" class="user-input-text" [formControl]="add_source"  placeholder="Source">
+
+<div class="text-center">
+<button type="submit" [disabled]="registerForm.invalid" class="ycc-button button-search">Submit</button>
+<button type="reset" class="ycc-button button-clear">Reset</button>
+</div>
+
+    </div>
+  </div>
+</form>
+
+
+
+<table class="postTable container" id="myTable">
+    <thead>
+      <tr>
+        <th (click)="sortTable(0)" class="postTableCss">Sku</th>
+        <th class="postTableCss"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let source of newArray" id='searchContainer' >
+          <td>
+              <form [formGroup]="editForm" (ngSubmit)="updateButton(source.sources, editForm.value)" novalidate autocomplete="off">                          
+              <span [hidden]="source.sourceEdit" (dblclick)="doubleClickSource(source)">{{ source.sources }}</span>
+              <input ID="formInput" [hidden]="!source.sourceEdit" [formControl]="newSource"  autofocus />
+              <input [hidden]="!source.sourceEdit" (click)="doneEditSource(source)" type="submit" value="Edit">
+              <button type="button" [hidden]="!source.sourceEdit" (click)="doneEditSource(source)">cancel</button>
+            </form>
+            </td>
+      </tr>
+    </tbody>
+  </table>
+

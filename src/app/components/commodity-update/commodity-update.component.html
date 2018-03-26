@@ -1,0 +1,41 @@
+<form [formGroup]="registerForm" (ngSubmit)="addButton(registerForm.value)" novalidate autocomplete="off">
+  <div class="sub-search-container row">
+    <h3>Commodity Details</h3>
+    <!-- <div class="sub-search-wrapper"> -->
+
+      <div class="col-md-4">
+        <label for="add_sku_description">Add Commodity</label>
+        <input type="text" class="user-input-text" [formControl]="add_commodity"  placeholder="Sku Description">
+
+<div class="text-center">
+<button type="submit" [disabled]="registerForm.invalid" class="ycc-button button-search">Submit</button>
+<button type="reset" class="ycc-button button-clear">Reset</button>
+</div>
+
+    </div>
+  </div>
+</form>
+
+
+
+<table class="postTable container" id="myTable">
+    <thead>
+      <tr>
+        <th (click)="sortTable(0)" class="postTableCss">Commodity</th>
+        <th class="postTableCss"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commodity of newArray" id='searchContainer' >
+          <td>
+              <form [formGroup]="editForm" (ngSubmit)="updateButton(commodity.commodity, editForm.value)" novalidate autocomplete="off">                          
+              <span [hidden]="commodity.commodityEdit" (dblclick)="doubleClickCommodity(commodity)">{{ commodity.commodity }}</span>
+              <input ID="formInput" [hidden]="!commodity.commodityEdit" [formControl]="newCommodity"  autofocus />
+              <input [hidden]="!commodity.commodityEdit" (click)="doneEditCommodity(commodity)" type="submit" value="Edit">
+              <button type="button" [hidden]="!commodity.commodityEdit" (click)="doneEditCommodity(commodity)">cancel</button>
+            </form>
+            </td>
+
+      </tr>
+    </tbody>
+  </table>

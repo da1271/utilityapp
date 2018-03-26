@@ -1,0 +1,55 @@
+img {
+  display: block;
+  margin: auto;
+  width: 43%;
+  height: 30%;
+  padding-top: 0;
+
+}
+#logInBox {
+  border: 3px solid #aba9a9;
+    border-color: #aba9a9;
+}
+
+#logInButton {
+  background-color: #ccc;
+  border-color: #aba9a9;
+  width: 50%;
+  height: 100%;
+  display: block;
+  margin: auto;
+}
+
+#inputUser {
+  display: block;
+  margin: auto;
+  /*size: 4;*/
+  /*height: 100%;*/
+  width: 50%;
+}
+#registerUser {
+  display: block;
+  margin-left: 23%;
+
+}
+#inputPassword {
+  align: center;
+  display: block;
+  margin: auto;
+  height: 80%;
+  width: 50%;
+}
+.brand{
+    padding-top: 10px;
+}
+.brand small{
+        font-size: 18px;
+    margin-left: 190px;
+    color: #b3afaf;
+    font-style: italic;
+}
+  .forgotpassword{
+        border: 0;
+    background: none;
+    color: #2e9ef7;
+  }

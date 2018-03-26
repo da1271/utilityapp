@@ -1,0 +1,40 @@
+<form [formGroup]="registerForm" (ngSubmit)="addButton(registerForm.value)" novalidate autocomplete="off">
+  <div class="sub-search-container row">
+    <h3>Product Form Details</h3>
+    <!-- <div class="sub-search-wrapper"> -->
+
+      <div class="col-md-4">
+        <label for="add_sku_description">Add Product Form</label>
+        <input type="text" class="user-input-text" [formControl]="add_product_form"  placeholder="Product Form">
+
+<div class="text-center">
+<button type="submit" [disabled]="registerForm.invalid" class="ycc-button button-search">Submit</button>
+<button type="reset" class="ycc-button button-clear">Reset</button>
+</div>
+
+    </div>
+  </div>
+</form>
+
+
+
+<table class="postTable container" id="myTable">
+    <thead>
+      <tr>
+        <th (click)="sortTable(0)" class="postTableCss">Product Form</th>
+        <th class="postTableCss"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product_form of newArray" id='searchContainer' >
+          <td>
+              <form [formGroup]="editForm" (ngSubmit)="updateButton(product_form.product_forms, editForm.value)" novalidate autocomplete="off">                          
+              <span [hidden]="product_form.product_formEdit" (dblclick)="doubleClickProductForm(product_form)">{{ product_form.product_forms }}</span>
+              <input ID="formInput" [hidden]="!product_form.product_formEdit" [formControl]="newProductForm"  autofocus />
+              <input [hidden]="!product_form.product_formEdit" (click)="doneEditProductForm(product_form)" type="submit" value="Edit">
+              <button type="button" [hidden]="!product_form.product_formEdit" (click)="doneEditProductForm(product_form)">cancel</button>
+            </form>
+            </td>
+      </tr>
+    </tbody>
+  </table>

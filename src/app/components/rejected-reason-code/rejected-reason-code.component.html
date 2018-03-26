@@ -1,0 +1,55 @@
+<div class='container'>
+<form [formGroup]="registerForm" (ngSubmit)="addButtonCode(registerForm.value); addButtonDesc(registerForm.value)" novalidate autocomplete="off">
+  <div class="sub-search-container row">
+    <h3>Rejected Reason Code Details</h3>
+    <!-- <div class="sub-search-wrapper"> -->
+
+      <div class="col-md-4">
+        <label for="add_rejected_reason_code">Add Rejected Reason Code and Description</label><br>
+        <input type="text" class="user-input-text" [formControl]="add_rejected_reason_code"  placeholder="Rejected Reason Code">
+        <input ID="formSku" type="text" class="user-input-text" [formControl]="add_rejected_reason_desc"  placeholder="Rejected Reason Description">
+
+<div class="text-center">
+<button type="submit" [disabled]="registerForm.invalid" class="ycc-button button-search">Submit</button>
+<button type="reset" class="ycc-button button-clear">Reset</button>
+</div>
+
+    </div>
+  </div>
+</form>
+
+<br>
+
+<table class="postTable container" id="myTable">
+    <thead>
+      <tr>
+        <th (click)="sortTable(0)" class="postTableCss">Rejected Reason Code</th>
+        <th class="postTableCss"> Rejected Reason Descriptions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reject of newArray" id='searchContainer' >
+          <td>
+              <span [hidden]="reject.editingReasonCode" (dblclick)="doubleClickCode(reject)">{{ reject.reason_codes }}</span>
+              <form [formGroup]="editCode" (ngSubmit)="updateButtonCode(reject.reason_codes, editCode.value)" novalidate autocomplete="off">
+                <input ID="formSku" [hidden]="!reject.editingReasonCode" [formControl]="newRejectedReasonCode"  autofocus />
+                <input [hidden]="!reject.editingReasonCode" (click)="doneEditCode(reject)" type="submit" value="Edit">
+                <button type="button" [hidden]="!reject.editingReasonCode" (click)="doneEditCode(reject)">cancel</button>
+              </form>
+          </td>
+          <td>
+              <span [hidden]="reject.editingReasonDesc" (dblclick)="doubleClickDesc(reject)">{{ reject.reason_descriptions  }}</span>
+              <form [formGroup]="description" (ngSubmit)="updateButtonDesc(reject.reason_descriptions, description.value)" novalidate autocomplete="off">
+                <input ID="formSku" [hidden]="!reject.editingReasonDesc" [formControl]="newRejectedReasonDesc"  autofocus />
+                <input [hidden]="!reject.editingReasonDesc" (click)="doneEditDesc(reject)" type="submit" value="Edit">
+                <button type="button" [hidden]="!reject.editingReasonDesc" (click)="doneEditDesc(reject)">cancel</button>
+              </form>
+          </td>
+        
+        <!-- <td><form [formGroup]="editForm" (ngSubmit)="updateButton(reject_reason_code, editForm.value)" novalidate autocomplete="off"><input [formControl]="newRejectedReasonCode" class="clickableCell" ><input type="submit" value="Edit"></form></td>
+        <td><img id="trash" title="Delete Group" type="image" src="assets/images/delete_icon.png" class="clickableCell" (click)="removeButton(reject_reason_code)"></td><br> -->
+
+      </tr>
+    </tbody>
+  </table>
+</div>

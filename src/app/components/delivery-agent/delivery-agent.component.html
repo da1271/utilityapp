@@ -1,0 +1,40 @@
+<form [formGroup]="registerForm" (ngSubmit)="addButton(registerForm.value)" novalidate autocomplete="off">
+  <div class="sub-search-container row">
+    <h3>Delivery Agent Details</h3>
+    <!-- <div class="sub-search-wrapper"> -->
+
+      <div class="col-md-4">
+        <label for="add_delivery_agent">Add Delivery Agent</label>
+        <input type="text" class="user-input-text" [formControl]="add_delivery_agent"  placeholder="Delivery Agent">
+
+<div class="text-center">
+<button type="submit" [disabled]="registerForm.invalid" class="ycc-button button-search">Submit</button>
+<button type="reset" class="ycc-button button-clear">Reset</button>
+</div>
+
+    </div>
+  </div>
+</form>
+
+
+
+<table class="postTable container" id="myTable">
+    <thead>
+      <tr>
+        <th (click)="sortTable(0)" class="postTableCss">Sku</th>
+        <th class="postTableCss"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let delivery_agent of newArray" id='searchContainer' >
+          <td>
+              <form [formGroup]="editForm" (ngSubmit)="updateButton(delivery_agent.delivery_agents, editForm.value)" novalidate autocomplete="off">                          
+              <span [hidden]="delivery_agent.delivery_agentEdit" (dblclick)="doubleClickDeliveryAgent(delivery_agent)">{{ delivery_agent.delivery_agents }}</span>
+              <input ID="formInput" [hidden]="!delivery_agent.delivery_agentEdit" [formControl]="newDeliveryAgent"  autofocus />
+              <input [hidden]="!delivery_agent.delivery_agentEdit" (click)="doneEditDeliveryAgent(delivery_agent)" type="submit" value="Edit">
+              <button type="button" [hidden]="!delivery_agent.delivery_agentEdit" (click)="doneEditDeliveryAgent(delivery_agent)">cancel</button>
+            </form>
+          </td>        
+      </tr>
+    </tbody>
+  </table>

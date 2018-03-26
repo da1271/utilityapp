@@ -1,0 +1,71 @@
+﻿                    <div class="container">
+                      <nav *ngIf="authService.isLoggedIn()">
+                        <ul class="orderslist">
+                              <li [ngClass]="{'active':sku}">
+                              <a routerlink="/sku" routerlinkactive="active" ng-reflect-router-link="/sku" ng-reflect-router-link-active="active" href="/sku" class="active">Sku</a>
+                              </li>
+                              <!-- <li [ngClass]="{'active':skuDesc}">
+                                <a routerlink="/skuDesc" routerlinkactive="active" ng-reflect-router-link="/skuDesc" ng-reflect-router-link-active="active" href="/skuDesc" class="active">Sku Description</a>
+                              </li> -->
+                              <li [ngClass]="{'active':currency}">
+                                <a routerlink="/currency" routerlinkactive="active" ng-reflect-router-link="/currency" ng-reflect-router-link-active="active" href="/currency" class="active">Currency</a>
+                              </li>
+                              <li [ngClass]="{'active':country}">
+                                <a routerlink="/country" routerlinkactive="active" ng-reflect-router-link="/country" ng-reflect-router-link-active="active" href="/country" class="active">Country</a>
+                              </li>
+                              <li [ngClass]="{'active':commodity}">
+                                <a routerlink="/commodity" routerlinkactive="active" ng-reflect-router-link="/commodity" ng-reflect-router-link-active="active" href="/commodity" class="active">Commodity</a>
+                              </li>
+                              <li [ngClass]="{'active':label}">
+                                <a routerlink="/label" routerlinkactive="active" ng-reflect-router-link="/label" ng-reflect-router-link-active="active" href="/label" class="active">Label</a>
+                              </li>
+                              <li [ngClass]="{'active':source}">
+                                <a routerlink="/source" routerlinkactive="active" ng-reflect-router-link="/source" ng-reflect-router-link-active="active" href="/source" class="active">Source</a>
+                              </li>
+                              <li [ngClass]="{'active':destination}">
+                                <a routerlink="/destination" routerlinkactive="active" ng-reflect-router-link="/destination" ng-reflect-router-link-active="active" href="/destination" class="active">Destination</a>
+                              </li>
+                              <li [ngClass]="{'active':productForm}">
+                                <a routerlink="/productForm" routerlinkactive="active" ng-reflect-router-link="/productForm" ng-reflect-router-link-active="active" href="/productForm" class="active">Product Form</a>
+                              </li>
+                              <!-- <li [ngClass]="{'active':productFragrance}">
+                                <a routerlink="/productFragrance" routerlinkactive="active" ng-reflect-router-link="/productFragrance" ng-reflect-router-link-active="active" href="/productFragrance" class="active">Product Fragrance</a>
+                              </li> -->
+                              <li [ngClass]="{'active':orderSize}">
+                                <a routerlink="/orderSize" routerlinkactive="active" ng-reflect-router-link="/orderSize" ng-reflect-router-link-active="active" href="/orderSize" class="active">Order Size</a>
+                              </li>
+                              <li [ngClass]="{'active':orderStatus}">
+                                <a routerlink="/orderStatus" routerlinkactive="active" ng-reflect-router-link="/orderStatus" ng-reflect-router-link-active="active" href="/orderStatus" class="active">Order Status</a>
+                              </li>
+                              <li [ngClass]="{'active':deliveryAgent}">
+                                <a routerlink="/deliveryAgent" routerlinkactive="active" ng-reflect-router-link="/deliveryAgent" ng-reflect-router-link-active="active" href="/deliveryAgent" class="active">Delivery Agent</a>
+                              </li>
+                              <li [ngClass]="{'active':deliveryMethod}">
+                                <a routerlink="/deliveryMethod" routerlinkactive="active" ng-reflect-router-link="/deliveryMethod" ng-reflect-router-link-active="active" href="/deliveryMethod" class="active">Delivery Method</a>
+                              </li>
+                              <li [ngClass]="{'active':rejectCode}">
+                                <a routerlink="/rejectCode" routerlinkactive="active" ng-reflect-router-link="/rejectCode" ng-reflect-router-link-active="active" href="/rejectCode" class="active">Rejected Reason Code</a>
+                              </li>
+                              <li [ngClass]="{'active':login}">
+                                  <a routerlink="/login" routerlinkactive="active" ng-reflect-router-link="/login" ng-reflect-router-link-active="active" href="/login" class="active">Logout</a>
+                                </li>
+                              <!-- <li [ngClass]="{'active':rejectDesc}">
+                                <a routerlink="/rejectDesc" routerlinkactive="active" ng-reflect-router-link="/rejectDesc" ng-reflect-router-link-active="active" href="/rejectDesc" class="active">Rejected Reason Description</a>
+                              </li> -->
+                            </ul>
+                        </nav>
+                      </div>
+                        <!-- <div class="jumbotron"> -->
+  <!-- <div class="row">
+  <div class="col-md-10 col-md-offset-1">
+
+  </div>
+</div> -->
+<br>
+    <!-- <div class="container"> -->
+        <div class="col-sm-8 col-sm-offset-2">
+            <alert></alert>
+            <router-outlet></router-outlet>
+        </div>
+    <!-- </div> -->
+<!-- </div> -->

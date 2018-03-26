@@ -1,0 +1,41 @@
+<form [formGroup]="registerForm" (ngSubmit)="addButton(registerForm.value)" novalidate autocomplete="off">
+  <div class="sub-search-container row">
+    <h3>Destination Details</h3>
+    <!-- <div class="sub-search-wrapper"> -->
+
+      <div class="col-md-4">
+        <label for="add_destination">Add Destination</label>
+        <input type="text" class="user-input-text" [formControl]="add_destination"  placeholder="Destination">
+
+<div class="text-center">
+<button type="submit" [disabled]="registerForm.invalid" class="ycc-button button-search">Submit</button>
+<button type="reset" class="ycc-button button-clear">Reset</button>
+</div>
+
+    </div>
+  </div>
+</form>
+
+
+
+<table class="postTable container" id="myTable">
+    <thead>
+      <tr>
+        <th (click)="sortTable(0)" class="postTableCss">Sku</th>
+        <th class="postTableCss"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let destination of newArray" id='searchContainer' >
+          <td>
+              <form [formGroup]="editForm" (ngSubmit)="updateButton(destination.destinations, editForm.value)" novalidate autocomplete="off">                          
+              <span [hidden]="destination.destinationEdit" (dblclick)="doubleClickDestination(destination)">{{ destination.destinations }}</span>
+              <input ID="formInput" [hidden]="!destination.destinationEdit" [formControl]="newDestination"  autofocus />
+              <input [hidden]="!destination.destinationEdit" (click)="doneEditDestination(destination)" type="submit" value="Edit">
+              <button type="button" [hidden]="!destination.destinationEdit" (click)="doneEditDestination(destination)">cancel</button>
+            </form>
+            </td>
+      </tr>
+    </tbody>
+  </table>
+
